@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% block head %}
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - Микроблог</title>
+	{% endblock %}
+</head>
+<body>
+	<header>
+		{% block header %}
+		Микроблог <a href="/index">Главная</a>
+		| <a href="/create">Новый пост</a> 
+		| <a href="/manage">Менеджер записей</a>
+		{% endblock %}
+	</header>
+	<div id="content">
+		{% block content %}
+		Здесь будут посты
+		{% endblock %}
+	</div>
+	<footer>
+		{% block footer %}
+		&copy; Совсем ничего не защищено
+		{% endblock %}
+	</footer>
+</body>
+</html>

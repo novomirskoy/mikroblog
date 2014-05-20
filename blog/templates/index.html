@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Последние записи</h1>
+<div id="flash-messages">
+	{% with messages =  get_flashed_messages() %}
+	{% if messages %}
+		<ul>
+			{% for message in messages %}
+				<li>{{message}}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	{% endwith %}
+</div>
+{% endblock %}
