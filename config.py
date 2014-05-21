@@ -1,7 +1,10 @@
 import os
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+base_dir = os.path.abspath(os.path.dirname(__file__))
 
-WTF_CSRF_ENABLED = True
+DEBUG = True
+USERNAME = "endin"
+PASSWORD = "Fssda11a"
 SECRET_KEY = "blablublimblimblubla"
+WTF_CSRF_ENABLED = True

@@ -13,6 +13,15 @@
 		| <a href="/create">Новый пост</a> 
 		| <a href="/manage">Менеджер записей</a>
 		{% endblock %}
+
+        <div>
+            {% if not session.logged_in %}
+                <a href="{{url_for('login')}}">Вход</a>
+            {% else %}
+                <a href="{{url_for('logout')}}">Выход</a>
+            {% endif %}
+        </div>
+
 	</header>
 	<div id="content">
 		{% block content %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+        <h2>Вход</h2>
+        {% if error %}
+            <p class="error">
+                <strong>Ошибка: {{error}}</strong>
+            </p>
+        {% endif %}
+        <form action="{{url_for('login')}}" method="POST">
+            {{form.hidden_tag()}}
+            {% for error in form.errors.username %}
+                <span style="color: red;">[Имя пользователя не может быть пустым]</span><br>
+            {% endfor %}
+            {% for error in form.errors.password %}
+                <span style="color: red;">[Пароль не может быть пустым]</span><br/>
+            {% endfor %}
+            <table>
+                <tr>
+                    <td>{{form.username.label}}</td>
+                    <td>{{form.username(size=30)}}</td>
+                </tr>
+                <tr>
+                    <td>{{form.password.label}}</td>
+                    <td>{{form.password(size=30)}}</td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Войти">
+        </form>
+{% endblock %}
