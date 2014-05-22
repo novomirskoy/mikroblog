@@ -5,10 +5,6 @@ from peewee import *
 
 app = Flask(__name__)
 app.config.from_object("config")
-app.config['DATABASE'] = {
-	"name": "blog.db",
-	"engine": "peewee.SqliteDatabase",
-}
 db = Database(app)
 
 from blog import views

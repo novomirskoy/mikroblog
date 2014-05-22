@@ -6,26 +6,43 @@ from flask import request
 from flask import session
 from flask import url_for
 from blog.forms import *
+from blog.models import *
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    posts = Post.select().order_by(Post.id.desc())
+    return render_template("index.html",
+                           posts=posts)
 
 
-@app.route("/create", methods=('GET', 'POST'))
+@app.route("/create", methods=['GET', 'POST'])
 def create_post():
     form = CreatePostForm()
     if form.validate_on_submit():
-        flash("Новая запись успешно добавлена")
+        post = Post()
+        post.name = request.form["name"]
+        post.text = request.form["text"]
+        post.save()
+        flash("Запись " + request.form['name'] + " добавлена")
+        return redirect("/index")
+    return render_template("create.html", form=form, id=id)
+
+
+@app.route("/edit/<int:id>", methods=['GET', 'POST'])
+def edit_post(id):
+    post = Post.select().where(Post.id == id).get()
+    form = CreatePostForm()
+    form.name.data = post.name
+    form.text.data = post.text
+    if form.validate_on_submit():
+        post.name = request.form["name"]
+        post.text = request.form["text"]
+        post.save()
+        flash("Запись " + request.form['name'] + " обновлена")
         return redirect("/index")
     return render_template("create.html", form=form)
-
-
-@app.route("/edit")
-def edit_post():
-    return "edit post"
 
 
 @app.route("/manage")

@@ -4,9 +4,11 @@
 	{% block head %}
 	<meta charset="UTF-8">
 	<title>{% block title %}{% endblock %} - Микроблог</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 	{% endblock %}
 </head>
 <body>
+    <div class="page">
 	<header>
 		{% block header %}
 		Микроблог <a href="/index">Главная</a>
@@ -14,7 +16,7 @@
 		| <a href="/manage">Менеджер записей</a>
 		{% endblock %}
 
-        <div>
+        <div class="login">
             {% if not session.logged_in %}
                 <a href="{{url_for('login')}}">Вход</a>
             {% else %}
@@ -33,5 +35,6 @@
 		&copy; Совсем ничего не защищено
 		{% endblock %}
 	</footer>
+    </div>
 </body>
 </html>

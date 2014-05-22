@@ -4,7 +4,7 @@
 
 <h1>Создание нового поста</h1>
 
-<form action="" method="POST">
+<form action="" method="POST" id="create-post">
 	{{form.hidden_tag()}}
 	{% for error in form.errors.name %}
 		<span style="color: red;">[Заголовок должен быть обязательным]</span><br>
@@ -12,18 +12,13 @@
 	{% for error in form.errors.text %}
 		<span style="color: red;">[Текст должен быть обязательным]</span><br/>
 	{% endfor %}
-	<table>
-	<tr>
-		<td>{{form.name.label}}</td> 
-		<td>{{form.name(size=50)}}</td>
-	</tr>
-	<tr>
-		<td>{{form.text.label}}</td> 
-		<td>{{form.text(rows=5, cols=39)}}</td>
-	</tr>
-	</table>
-	<br>
+
+    <dl>
+        <dt>{{form.name.label}}</dt>
+        <dd>{{form.name(size=50)}}</dd>
+        <dt>{{form.text.label}}</dt>
+        <dd>{{form.text(rows=5, cols=40)}}</dd>
+    </dl>
 	<input type="submit" value="Сохранить">
 </form>
-
 {% endblock %}

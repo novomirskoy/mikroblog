@@ -8,3 +8,7 @@ USERNAME = "endin"
 PASSWORD = "Fssda11a"
 SECRET_KEY = "blablublimblimblubla"
 WTF_CSRF_ENABLED = True
+DATABASE = {
+    "name": "blog.db",
+    "engine": "peewee.SqliteDatabase"
+}
